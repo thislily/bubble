@@ -18,7 +18,7 @@
       rel="stylesheet"
     />
 
-    <script type="module" src="/js/app.js"></script>
+    <script type="module" src="js/app.mjs"></script>
     <title>Login | Bubble</title>
   </head>
   <body class="bg-secondary">
@@ -33,7 +33,7 @@
           />
         </div>
 
-        <!-- LOGIN / REGISTER WIDGET -->
+        <!-- LOGIN WIDGET -->
         <div
           class="col col-12 col-md-6 offset-md-3 col-xl-4 offset-xl-1 d-flex flex-column align-items-center"
         >
@@ -47,10 +47,7 @@
             class="card bg-light mt-3 w-100 border-0 rounded-5 shadow"
           >
             <form
-              action="javascript:void(0);"
-              method="post"
-              class=""
-              onsubmit="window.location.href='profile/index.html'; return false;"
+              id="login-form"
             >
               <div class="py-5 px-3">
                 <div class="form-floating mb-3">
@@ -58,6 +55,7 @@
                     type="email"
                     class="form-control rounded-4"
                     id="login-email"
+                    name="email"
                     placeholder="name@noroff.no"
                     pattern=".+@((noroff\.no)|(stud\.noroff\.no))$"
                     title="Email must end with @noroff.no or @stud.noroff.no"
@@ -70,6 +68,7 @@
                     type="password"
                     class="form-control rounded-4"
                     id="login-password"
+                    name="password"
                     placeholder="Password"
                     minlength="8"
                     title="Password must be at least 8 characters long"
@@ -89,117 +88,19 @@
             </form>
           </div>
 
-          <!-- REGISTER -->
-          <div
-            id="register-user"
-            class="card bg-light mt-3 w-100 border-0 rounded-5 shadow visually-hidden"
-          >
-            <form
-              action="javascript:void(0);"
-              method="post"
-              class=""
-              onsubmit="window.location.href='profile/index.html'; return false;"
-            >
-              <div class="py-5 px-3">
-                <div class="form-floating mb-3">
-                  <input
-                    type="text"
-                    name="name"
-                    class="form-control rounded-4"
-                    id="reg-name"
-                    placeholder="Name"
-                    pattern="^[A-Za-zÀ-ÖØ-öø-ÿ]+(?:[\s\-'A-Za-zÀ-ÖØ-öø-ÿ]*)*$"
-                    title="Please enter a valid name (letters, spaces, hyphens, and apostrophes allowed)."
-                    required
-                  />
-                  <label for="reg-name">Name</label>
-                </div>
-                <div class="form-floating mb-3">
-                  <input
-                    type="email"
-                    name="email"
-                    class="form-control rounded-4"
-                    id="reg-email"
-                    placeholder="name@noroff.no"
-                    pattern=".+@((noroff\.no)|(stud\.noroff\.no))$"
-                    title="Email must end with @noroff.no or @stud.noroff.no"
-                    required
-                  />
-                  <label for="reg-email">Email (noroff address only)</label>
-                </div>
-                <div class="form-floating mb-3">
-                  <input
-                    type="url"
-                    name="avatar"
-                    class="form-control rounded-4"
-                    id="reg-avatar"
-                    placeholder="Profile image url"
-                    pattern="^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$"
-                    title="Please enter a valid URL."
-                  />
-                  <label for="reg-avatar">Profile image url</label>
-                </div>
-                <div class="form-floating mb-3">
-                  <input
-                    type="url"
-                    name="banner"
-                    class="form-control rounded-4"
-                    id="reg-banner"
-                    placeholder="Banner image url"
-                    pattern="^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$"
-                    title="Please enter a valid URL."
-                  />
-                  <label for="reg-banner">Banner image url</label>
-                </div>
-                <div class="form-floating">
-                  <input
-                    type="password"
-                    class="form-control rounded-4"
-                    id="reg-password"
-                    placeholder="Password"
-                    minlength="8"
-                    title="Password must be at least 8 characters long"
-                    required
-                  />
-                  <label for="reg-password">Password (min 8 characters)</label>
-                </div>
-              </div>
-              <button
-                type="submit"
-                class="text-black text-center btn-success bg-success w-100 border-0 rounded-bottom-5 rounded-top-0 py-3 display-6"
-              >
-                Create account
-              </button>
-            </form>
-          </div>
-
           <!-- SEE REGISTER WIDGET -->
-          <button
-            href=""
-            id="register-here"
-            class="bg-light rounded-5 w-100 mt-3 border-0 p-3 text-center text-black text-decoration-none"
+          <a href="register/index.html"
+          class="bg-light rounded-5 w-100 mt-3 border-0 p-3 text-center text-black text-decoration-none"
           >
+
             Don't have a Bubble account?
             <br />
             <span
               class="text-decoration-underline text-primary link-body-emphasis"
               >Sign up now!</span
             >
-          </button>
+          </a>
 
-          <!-- SEE LOGIN WIDGET -->
-          <button
-            href=""
-            id="login-here"
-            class="bg-light rounded-5 w-100 mt-3 border-0 p-3 text-center text-black text-decoration-none visually-hidden"
-          >
-            Already have a Bubble account?
-            <br />
-            <span
-              class="text-decoration-underline text-primary link-body-emphasis"
-              >Back to login</span
-            >
-          </button>
         </div>
       </div>
     </div>

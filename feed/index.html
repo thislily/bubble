@@ -21,8 +21,9 @@
       rel="stylesheet"
       href="../node_modules/bootstrap-icons/font/bootstrap-icons.css"
     />
+    <script type="module" src="../js/app.mjs"></script>
 
-    <title>Profile | Bubble</title>
+    <title>Feed | Bubble</title>
   </head>
   <body class="bg-secondary">
     <!-- HEADER -->
@@ -39,568 +40,109 @@
         />
         <a href=""><i class="bi bi-envelope-fill text-black h4"></i></a>
       </nav>
-
     </header>
 
     <main>
-      <!-- FEED -->
-
-      <div class="container pb-5 feed">
-
-      <!-- sort feed -->
-      <div
-      class="card rounded-5  bg-light m-auto p-3 py-4 border-0 mb-3 "
-    >
-      <select class="form-select" aria-label="Sort feed posts">
-        <option selected>Sort posts</option>
-        <option value="1">New to old</option>
-        <option value="2">Only people I follow</option>
-        <option value="3">Show me something new</option>
-      </select>
-    </div>
-        <!-- to post -->
-        <div class="card rounded-5 bg-light m-auto p-0 border-0 mb-3">
-          <div class="card-body p-0">
-            <div class="row p-3">
-              <div class="col col-auto pe-0 d-flex flex-row">
-                <img
-                  src="../images/profile-cameron.jpg"
-                  alt=""
-                  class="profile-thumbnail img-thumbnail rounded-circle p-0"
-                />
-                <h3 class="card-title h4 pt-3 ps-2">Cameron Evergreen</h3>
-              </div>
-
-              <div class="col">
-                <button class="btn visually-hidden p-3"></button>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <form action="" class="p-3">
-                  <div class="form-floating">
-                    <textarea
-                      class="form-control"
-                      placeholder="Share your thoughts"
-                      id="newPost"
-                    ></textarea>
-                    <label for="newPost"
-                      ><i class="bi bi-pencil"></i> Share your
-                      thoughts...</label
-                    >
+      <!-- FEED --> 
+      <div class="container pt-5 feed">
+                <!-- sort feed -->
+                <div class="card rounded-5 bg-light m-auto p-3 py-4 border-0 mb-3">
+                  <select
+                    class="form-select rounded-4 p-2"
+                    id="filter-posts"
+                    aria-label="Sort feed posts"
+                  >
+                    <!-- show all posts -->
+                    <option selected><i class="bi bi-filter"></i> Sort posts (default)</option>
+                    <!-- only show posts that do not include the words test or example in their title or body -->
+                    <option value="1">No test or example posts</option>
+                    <!-- only show posts that are made by people I follow -->
+                    <option value="2">Only people I follow</option>
+                    <!-- only show posts that are made by people I do not follow -->
+                    <option value="3">Show me something new</option>
+                  </select>
+                </div>
+                <!-- to post -->
+                <div class="card rounded-5 bg-light m-auto p-0 border-0 mb-3" id="create-post">
+                  <div class="card-body p-0">
+                    <div class="row p-3">
+                      <div class="col col-auto pe-0 d-flex flex-row">
+                        <img
+                          id="avatar-img-post"
+                          src=""
+                          alt=""
+                          class="profile-thumbnail img-thumbnail rounded-circle p-0 object-fit-cover"
+                          style="aspect-ratio: 1"
+                        />
+                        <h3 id="profile-name-post" class="card-title h4 pt-3 ps-2"></h3>
+                      </div>
+        
+                      <div class="col">
+                        <button class="btn visually-hidden p-3"></button>
+                      </div>
+                    </div>
+        
+                    <div class="row">
+                      <div class="col">
+                        <form action="" id="create-post-form">
+                          <div class="p-3">
+                            <div class="form-floating mb-3">
+                              <input
+                                type="text"
+                                name="title"
+                                class="form-control rounded-4"
+                                id="postTitle"
+                                placeholder="Title"
+                                required
+                              />
+                              <label for="postTitle">
+                                <i class="bi bi-pencil"> </i> Post title
+                              </label>
+                            </div>
+        
+                            <div class="form-floating mb-3">
+                              <input
+                                type="text"
+                                name="body"
+                                class="form-control rounded-4"
+                                id="postBody"
+                                placeholder="Body"
+                                maxlength="280"
+                              />
+                              <label for="postBody">
+                                <i class="bi bi-chat"> </i> Share your thoughts
+                              </label>
+                            </div>
+        
+                            <div class="form-floating mb-3">
+                              <input
+                                type="url"
+                                name="media"
+                                class="form-control rounded-4"
+                                id="postMedia"
+                                placeholder="Media"
+                              />
+                              <label for="postMedia">
+                                <i class="bi bi-camera"></i> Add a photo (url only)
+                              </label>
+                            </div>
+                          </div>
+        
+                          <button
+                            class="btn-success bg-success w-100 border-0 rounded-bottom-5 rounded-top-0 py-1 display-6"
+                          >
+                            <p class="m-3">Create Post <i class="bi bi-send"></i></p>
+                          </button>
+                        </form>
+                      </div>
+                    </div>
                   </div>
-                </form>
-                <button
-                  class="btn-success bg-body-tertiary w-100 border-0 rounded-bottom-5 rounded-top-0 py-1"
-                >
-                  <i class="bi bi-camera h3"></i>
-                  <br />
-                  Add a photo
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
+                </div>
+      </div>
 
-        <!-- post feed -->
-        <div class="card rounded-5 bg-light m-auto p-0 border-0 mb-3">
-          <div class="card-body p-0">
-            <div class="row p-3">
-              <div class="col col-auto pe-0 d-flex flex-row">
-                <img
-                  src="../images/profile-alex.jpg"
-                  alt=""
-                  class="profile-thumbnail img-thumbnail rounded-circle p-0"
-                />
-                <h3 class="card-title h4 pt-3 ps-2">Alex Jordan</h3>
-              </div>
-              <div class="col text-end pt-1">
-                <button
-                  class="btn bg-danger-subtle btn-outline-danger text-danger-emphasis p-1 px-2 m-1 text-end"
-                >
-                  unfollow
-                </button>
-              </div>
-            </div>
+      <div class="container pb-5 mb-5" id="feed">
+        <!-- feed -->
 
-            <div class="row">
-              <div class="col">
-                <p class="card-text px-4 pb-3">
-                  Had a moment today that reminded me exactly why I've chosen
-                  the path I'm on. Anyone else have stories of when they felt
-                  their choices were exactly right for them? #chosenfamily
-                  <br />
-                  <i class="text-dark">2 minutes ago</i>
-                </p>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col pe-0">
-                <button class="btn btn-success border-bottom-left-radius w-100">
-                  <i class="bi bi-check-circle h3"></i>
-                </button>
-              </div>
-
-              <div class="col ps-0">
-                <button class="btn btn-danger border-bottom-right-radius w-100">
-                  <i class="bi bi-x-circle h3"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card rounded-5 bg-light m-auto p-0 border-0 mb-3">
-          <div class="card-body p-0">
-            <div class="row p-3">
-              <div class="col col-auto pe-0 d-flex flex-row">
-                <img
-                  src="../images/profile-sam.jpg"
-                  alt=""
-                  class="profile-thumbnail img-thumbnail rounded-circle p-0"
-                />
-                <h3 class="card-title h4 pt-3 ps-2">Sam Nguyen</h3>
-              </div>
-              <div class="col text-end pt-1">
-                <button
-                  class="btn bg-success-subtle btn-outline-success text-success-emphasis ps-2 p-1 m-1 text-end"
-                >
-                  follow<i class="bi bi-plus"></i>
-                </button>
-              </div>
-            </div>
-            <img
-              src="../images/post-sam.jpg"
-              alt=""
-              class="card-image w-100 pb-3"
-            />
-
-            <div class="row">
-              <div class="col">
-                <p class="card-text px-4 pb-3">
-                  To anyone feeling a bit lost today, remember that this
-                  community is here for you. We're all on similar paths and can
-                  lift each other up. #Encouragement #BubbleStrength
-                  <br />
-                  <i class="text-dark">23 minutes ago</i>
-                </p>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col pe-0">
-                <button class="btn btn-success border-bottom-left-radius w-100">
-                  <i class="bi bi-check-circle h3"></i>
-                </button>
-              </div>
-
-              <div class="col ps-0">
-                <button class="btn btn-danger border-bottom-right-radius w-100">
-                  <i class="bi bi-x-circle h3"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card rounded-5 bg-light m-auto p-0 border-0 mb-3">
-          <div class="card-body p-0">
-            <div class="row p-3">
-              <div class="col col-auto pe-0 d-flex flex-row">
-                <img
-                  src="../images/profile-casey.jpg"
-                  alt=""
-                  class="profile-thumbnail img-thumbnail rounded-circle p-0"
-                />
-                <h3 class="card-title h4 pt-3 ps-2">Casey Smith</h3>
-              </div>
-              <div class="col text-end pt-1">
-                <button
-                  class="btn bg-success-subtle btn-outline-success text-success-emphasis ps-2 p-1 m-1 text-end"
-                >
-                  follow<i class="bi bi-plus"></i>
-                </button>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="card-text px-4 pb-3">
-                  My friends and family abandoned me cause of my free-thinking
-                  views on so called “medicine” and “science”! So grateful for a
-                  space where my beliefs are not only accepted but celebrated.
-                  Here's to more growth within our bubble. 🥂 #GratefulHeart
-                  #BubbleSafeSpace
-                  <br />
-                  <i class="text-dark">6 hours ago</i>
-                </p>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col pe-0">
-                <button class="btn btn-success border-bottom-left-radius w-100">
-                  <i class="bi bi-check-circle h3"></i>
-                </button>
-              </div>
-
-              <div class="col ps-0">
-                <button class="btn btn-danger border-bottom-right-radius w-100">
-                  <i class="bi bi-x-circle h3"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card rounded-5 bg-light m-auto p-0 border-0 mb-3">
-          <div class="card-body p-0">
-            <div class="row p-3">
-              <div class="col col-auto pe-0 d-flex flex-row">
-                <img
-                  src="../images/profile-charlie.jpg"
-                  alt=""
-                  class="profile-thumbnail img-thumbnail rounded-circle p-0"
-                />
-                <h3 class="card-title h4 pt-3 ps-2">Charlie Brooks</h3>
-              </div>
-              <div class="col text-end pt-1">
-                <button
-                  class="btn bg-danger-subtle btn-outline-danger text-danger-emphasis p-1 px-2 m-1 text-end"
-                >
-                  unfollow
-                </button>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="card-text px-4 pb-3">
-                  If you're looking for a book/movie/podcast that echoes our
-                  common beliefs, I highly recommend 'Harmony Echoes.' It was
-                  incredibly affirming. #Recommendations #BubbleFinds
-                  <br />
-                  <i class="text-dark">9 hours ago</i>
-                </p>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col pe-0">
-                <button class="btn btn-success border-bottom-left-radius w-100">
-                  <i class="bi bi-check-circle h3"></i>
-                </button>
-              </div>
-
-              <div class="col ps-0">
-                <button class="btn btn-danger border-bottom-right-radius w-100">
-                  <i class="bi bi-x-circle h3"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card rounded-5 bg-light m-auto p-0 border-0 mb-3">
-          <div class="card-body p-0">
-            <div class="row p-3">
-              <div class="col col-auto pe-0 d-flex flex-row">
-                <img
-                  src="../images/profile-taylor.jpg"
-                  alt=""
-                  class="profile-thumbnail img-thumbnail rounded-circle p-0"
-                />
-                <h3 class="card-title h4 pt-3 ps-2">Taylor Rivera</h3>
-              </div>
-              <div class="col text-end pt-1">
-                <button
-                  class="btn bg-success-subtle btn-outline-success text-success-emphasis ps-2 p-1 m-1 text-end"
-                >
-                  follow<i class="bi bi-plus"></i>
-                </button>
-              </div>
-            </div>
-            <img
-              src="../images/post-taylor.jpg"
-              alt=""
-              class="card-image w-100 pb-3"
-            />
-
-            <div class="row">
-              <div class="col">
-                <p class="card-text px-4 pb-3">
-                  Found this quote and it really spoke to me: 'Believe in
-                  yourself and all that you are. Know that there is something
-                  inside you that is greater than any obstacle.' #Inspiration
-                  #BubbleQuotes
-                  <br />
-                  <i class="text-dark">15 hours ago</i>
-                </p>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col pe-0">
-                <button class="btn btn-success border-bottom-left-radius w-100">
-                  <i class="bi bi-check-circle h3"></i>
-                </button>
-              </div>
-
-              <div class="col ps-0">
-                <button class="btn btn-danger border-bottom-right-radius w-100">
-                  <i class="bi bi-x-circle h3"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card rounded-5 bg-light m-auto p-0 border-0 mb-3">
-          <div class="card-body p-0">
-            <div class="row p-3">
-              <div class="col col-auto pe-0 d-flex flex-row">
-                <img
-                  src="../images/profile-morgan.jpg"
-                  alt=""
-                  class="profile-thumbnail img-thumbnail rounded-circle p-0"
-                />
-                <h3 class="card-title h4 pt-3 ps-2">Morgan Lee</h3>
-              </div>
-              <div class="col text-end pt-1">
-                <button
-                  class="btn bg-danger-subtle btn-outline-danger text-danger-emphasis p-1 px-2 m-1 text-end"
-                >
-                  unfollow
-                </button>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="card-text px-4 pb-3">
-                  Just read an article that perfectly aligns with my views on
-                  environmentalism. It's so reassuring to find content that
-                  resonates with our shared values. #Validated #BubbleCommunity
-                  <br />
-                  <i class="text-dark">22 hours ago</i>
-                </p>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col pe-0">
-                <button class="btn btn-success border-bottom-left-radius w-100">
-                  <i class="bi bi-check-circle h3"></i>
-                </button>
-              </div>
-
-              <div class="col ps-0">
-                <button class="btn btn-danger border-bottom-right-radius w-100">
-                  <i class="bi bi-x-circle h3"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card rounded-5 bg-light m-auto p-0 border-0 mb-3">
-          <div class="card-body p-0">
-            <div class="row p-3">
-              <div class="col col-auto pe-0 d-flex flex-row">
-                <img
-                  src="../images/profile-jordan.jpg"
-                  alt=""
-                  class="profile-thumbnail img-thumbnail rounded-circle p-0"
-                />
-                <h3 class="card-title h4 pt-3 ps-2">Jordan Kim</h3>
-              </div>
-              <div class="col text-end pt-1">
-                <button
-                  class="btn bg-danger-subtle btn-outline-danger text-danger-emphasis p-1 px-2 m-1 text-end"
-                >
-                  unfollow
-                </button>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="card-text px-4 pb-3">
-                  Just achieved a personal goal that I know this community will
-                  appreciate! Here's to celebrating our victories together.
-                  #Success #BubbleTriumphs
-                  <br />
-                  <i class="text-dark">yesterday</i>
-                </p>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col pe-0">
-                <button class="btn btn-success border-bottom-left-radius w-100">
-                  <i class="bi bi-check-circle h3"></i>
-                </button>
-              </div>
-
-              <div class="col ps-0">
-                <button class="btn btn-danger border-bottom-right-radius w-100">
-                  <i class="bi bi-x-circle h3"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card rounded-5 bg-light m-auto p-0 border-0 mb-3">
-          <div class="card-body p-0">
-            <div class="row p-3">
-              <div class="col col-auto pe-0 d-flex flex-row">
-                <img
-                  src="../images/profile-dakota.jpg"
-                  alt=""
-                  class="profile-thumbnail img-thumbnail rounded-circle p-0"
-                />
-                <h3 class="card-title h4 pt-3 ps-2">Dakota Reese</h3>
-              </div>
-              <div class="col text-end pt-1">
-                <button
-                  class="btn bg-danger-subtle btn-outline-danger text-danger-emphasis p-1 px-2 m-1 text-end"
-                >
-                  unfollow
-                </button>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="card-text px-4 pb-3">
-                  Let's reaffirm our beliefs together. Share the values that
-                  inspire you and double down on the misinformation we spread!
-                  #BeliefSystem #BubbleConvictions
-                  <br />
-                  <i class="text-dark">yesterday</i>
-                </p>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col pe-0">
-                <button class="btn btn-success border-bottom-left-radius w-100">
-                  <i class="bi bi-check-circle h3"></i>
-                </button>
-              </div>
-
-              <div class="col ps-0">
-                <button class="btn btn-danger border-bottom-right-radius w-100">
-                  <i class="bi bi-x-circle h3"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card rounded-5 bg-light m-auto p-0 border-0 mb-3">
-          <div class="card-body p-0">
-            <div class="row p-3">
-              <div class="col col-auto pe-0 d-flex flex-row">
-                <img
-                  src="../images/profile-jamie.jpg"
-                  alt=""
-                  class="profile-thumbnail img-thumbnail rounded-circle p-0"
-                />
-                <h3 class="card-title h4 pt-3 ps-2">Jamie Chen</h3>
-              </div>
-              <div class="col text-end pt-1">
-                <button
-                  class="btn bg-success-subtle btn-outline-success text-success-emphasis ps-2 p-1 m-1 text-end"
-                >
-                  follow<i class="bi bi-plus"></i>
-                </button>
-              </div>
-            </div>
-            <img
-              src="../images/post-jamie.jpg"
-              alt=""
-              class="card-image w-100 pb-3"
-            />
-
-            <div class="row">
-              <div class="col">
-                <p class="card-text px-4 pb-3">
-                  Anyone else into yoga that feels like it complements our
-                  lifestyle perfectly? Let's share tips and experiences!
-                  #SharedInterests #BubbleWellness
-                  <br />
-                  <i class="text-dark">yesterday</i>
-                </p>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col pe-0">
-                <button class="btn btn-success border-bottom-left-radius w-100">
-                  <i class="bi bi-check-circle h3"></i>
-                </button>
-              </div>
-
-              <div class="col ps-0">
-                <button class="btn btn-danger border-bottom-right-radius w-100">
-                  <i class="bi bi-x-circle h3"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card rounded-5 bg-light m-auto p-0 border-0 mb-3">
-          <div class="card-body p-0">
-            <div class="row p-3">
-              <div class="col col-auto pe-0 d-flex flex-row">
-                <img
-                  src="../images/profile-riley.jpg"
-                  alt=""
-                  class="profile-thumbnail img-thumbnail rounded-circle p-0"
-                />
-                <h3 class="card-title h4 pt-3 ps-2">Riley Patel</h3>
-              </div>
-              <div class="col text-end pt-1">
-                <button
-                  class="btn bg-danger-subtle btn-outline-danger text-danger-emphasis p-1 px-2 m-1 text-end"
-                >
-                  unfollow
-                </button>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col">
-                <p class="card-text px-4 pb-3">
-                  Feeling a bit overwhelmed lately. How do you all manage to
-                  ignore all the so-called “evidence” that people confront you
-                  with? #CommunityCare #BubbleSupport
-                  <br />
-                  <i class="text-dark">yesterday</i>
-                </p>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col pe-0">
-                <button class="btn btn-success border-bottom-left-radius w-100">
-                  <i class="bi bi-check-circle h3"></i>
-                </button>
-              </div>
-
-              <div class="col ps-0">
-                <button class="btn btn-danger border-bottom-right-radius w-100">
-                  <i class="bi bi-x-circle h3"></i>
-                </button>
-              </div>
-            </div>
-          </div>
-        </div>
       </div>
 
       <ul
@@ -608,32 +150,31 @@
         style="max-width: 400px"
       >
         <li class="nav-item">
-          <a class="nav-link" href="../profile/index.html"
+          <a class="nav-link" href="" id="profile-link"
             ><i class="bi bi-person-circle text-black h3"></i
           ></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"
+          <a class="nav-link" href="#" id="search-link"
             ><i class="bi bi-search text-black h3"></i
           ></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" href="#"
+          <a class="nav-link" aria-current="page" href="" id="feed-link"
             ><i class="bi bi-house-heart-fill text-black h3"></i
           ></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"
+          <a class="nav-link" href="#" id="create-post-link"
             ><i class="bi bi-plus-circle-fill text-black h3"></i
           ></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#"
+          <a class="nav-link" href="#" id="settings-link"
             ><i class="bi bi-gear-fill text-black h3"></i
           ></a>
         </li>
       </ul>
     </main>
-
   </body>
 </html>

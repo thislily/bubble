@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <link rel="stylesheet" href="../dist/css/index.css" />
+    <link rel="stylesheet" href="../../dist/css/index.css" />
     <script
       defer
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
@@ -19,11 +19,11 @@
     />
     <link
       rel="stylesheet"
-      href="../node_modules/bootstrap-icons/font/bootstrap-icons.css"
+      href="../../node_modules/bootstrap-icons/font/bootstrap-icons.css"
     />
-    <script type="module" src="/js/app.mjs"></script>
+    <script type="module" src="../../js/app.mjs"></script>
 
-    <title>Profile | Bubble</title>
+    <title>Edit Profile | Bubble</title>
   </head>
   <body class="bg-secondary">
     <!-- HEADER -->
@@ -34,7 +34,7 @@
       >
         <a href=""><i class="bi bi-bell-fill text-black h3"></i></a>
         <img
-          src="../images/logo.svg"
+          src="../../images/logo.svg"
           alt="Bubble logo"
           class="w-50 navbar-brand"
         />
@@ -52,16 +52,16 @@
         />
         <img
           class="profile-img img-thumbnail rounded-circle p-0 border-black shadow-lg z-2 position-absolute bottom-0 start-0 m-3 bg-transparent object-fit-cover"
-          style="aspect-ratio: 1"
           id="avatar-img"
+          style="aspect-ratio: 1;"
         />
       </div>
 
-      <div class="container-xl m-auto bg-gradient pb-3">
+      <div class="container-xl m-auto bg-gradient pb-1">
         <div class="row">
           <div class="col p-3 pb-0" id="profile-name"></div>
 
-          <div class="col text-end p-3 pb-0" id="edit-profile-button">
+          <div class="col text-end p-3 pb-0">
             <a
               href=""
               id="edit-profile-link"
@@ -88,86 +88,48 @@
         </div>
       </div>
 
-      <!-- POSTS -->
-      <div class="container pb-5 mb-5 mt-3" id="profile-post-feed">
-        <!-- create post -->
-        <div class="card rounded-5 bg-light m-auto p-0 border-0 mb-3" id="create-post-card">
-          <div class="card-body p-0">
-            <div class="row p-3">
-              <div class="col col-auto pe-0 d-flex flex-row">
-                <img
-                  id="avatar-img-post"
-                  src=""
-                  alt=""
-                  class="profile-thumbnail img-thumbnail rounded-circle p-0 object-fit-cover"
-                  style="aspect-ratio: 1;"
+      <!-- EDIT -->
+      <div class="container pb-5 mb-5">
+        <a href="" id="back-to-profile" class="btn btn-primary m-auto mb-3 mt-3 rounded-5"> <i class="bi bi-arrow-left"></i>  Back to Profile</a>
+
+        <div class="card bg-light mt-3 w-100 border-0 rounded-5 shadow mx-auto">
+          <form id="edit-profile-form">
+            <div class="py-5 px-3">
+              <div class="form-floating mb-3">
+                <input
+                  type="url"
+                  name="avatar"
+                  class="form-control rounded-4"
+                  id="edit-avatar"
+                  placeholder="Profile image url"
+                  pattern="^(https?:\/\/)?([\da-z.-]+\.[a-z]{2,6})([\/\w .-]*)*\/?(\.(jpg|jpeg|png|gif))$"
+                  title="Please enter a valid URL."
                 />
-                <h3 id="profile-name-post" class="card-title h4 pt-3 ps-2"></h3>
+                <label for="edit-avatar">Add new avatar (url only)</label>
               </div>
-
-              <div class="col">
-                <button class="btn visually-hidden p-3"></button>
+              
+              <div class="form-floating mb-3">
+                <input
+                  type="url"
+                  name="banner"
+                  class="form-control rounded-4"
+                  id="edit-banner"
+                  placeholder="Banner image url"
+                  pattern="^(https?:\/\/)?([\da-z.-]+\.[a-z]{2,6})([\/\w .-]*)*\/?(\.(jpg|jpeg|png|gif))$"
+                  title="Please enter a valid URL."
+                />
+                <label for="edit-banner">Add new banner (url only)</label>
               </div>
+             
             </div>
-
-            <div class="row">
-              <div class="col">
-                <form action="" id="create-post-form" >
-                  <div class="p-3">
-                    <div class="form-floating mb-3">
-                      <input
-                        type="text"
-                        name="title"
-                        class="form-control rounded-4"
-                        id="postTitle"
-                        placeholder="Title"
-                        required
-                      />
-                      <label for="postTitle">
-                        <i class="bi bi-pencil"> </i> Post title
-                      </label>
-                    </div>
-
-                    <div class="form-floating mb-3">
-                      <input
-                        type="text"
-                        name="body"
-                        class="form-control rounded-4"
-                        id="postBody"
-                        placeholder="Body"
-                        maxlength="280"
-                      />
-                      <label for="postBody">
-                        <i class="bi bi-chat"> </i> Share your thoughts
-                      </label>
-                    </div>
-
-                    <div class="form-floating mb-3">
-                      <input
-                        type="url"
-                        name="media"
-                        class="form-control rounded-4"
-                        id="postMedia"
-                        placeholder="Media"
-                      />
-                      <label for="postMedia">
-                        <i class="bi bi-camera"></i> Add a photo (url only)
-                      </label>
-                    </div>
-                  </div>
-
-                  <button
-                  class="btn-success bg-success  w-100 border-0 rounded-bottom-5 rounded-top-0 py-1 display-6"
-                >
-                  <p class="m-3">Create Post <i class="bi bi-send"></i></p>
-                </button>
-                </form>
-                
-              </div>
-            </div>
-          </div>
+            <button
+              type="submit"
+              class="text-black text-center btn-success bg-success w-100 border-0 rounded-bottom-5 rounded-top-0 py-3 display-6"
+            >
+              Update profile  <i class="bi bi-pencil-square"></i>
+            </button>
+          </form>
         </div>
-
       </div>
 
       <ul
